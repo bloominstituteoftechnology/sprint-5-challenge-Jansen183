@@ -8,6 +8,8 @@ async function sprintChallenge5() { // Note the async keyword so you can use `aw
   // 🧠 Use Axios to GET learners and mentors.
   // ❗ Use the variables `mentors` and `learners` to store the data.
   // ❗ Use the await keyword when using axios.
+// Import Axios if not already imported
+ const axios = require('axios');
 
   let mentors = [];
   let learners = [];
@@ -40,14 +42,12 @@ async function sprintChallenge5() { // Note the async keyword so you can use `aw
   //     "Grace Hopper"
   //   ]`
   // }
-  // Import Axios if not already imported
-  const axios = require('axios');
-
+  
 
      // Create a map of mentor IDs to mentor names for quick lookup
      const mentorMap = new Map();
      mentors.foreach(mentor => {
-      mentorMap.set(mentor.id,mentor,fullName);
+      mentorMap.set(mentor.id, mentor.fullName);
      });
   }
   // Transform learners array to include mentor names instead of IDs
@@ -66,7 +66,7 @@ learners = learners.map(learner => {
 
   const cardsContainer = document.querySelector('.cards')
   const info = document.querySelector('.info')
-  info.textContent = 'No learner is selected'
+  info.textContent = 'No learner is selected';
 
 
   // 👇 ==================== TASK 3 START ==================== 👇
@@ -80,11 +80,11 @@ learners = learners.map(learner => {
     // ❗ Fill each <li> with a mentor name, and append it to the <ul> mentorList.
     // ❗ Inspect the mock site closely to understand what the initial texts and classes look like!
 
-    const card = document.createElement('div')
-    const heading = document.createElement('h3')
-    const email = document.createElement('div')
-    const mentorsHeading = document.createElement('h4')
-    const mentorsList = document.createElement('ul')
+    const card = document.createElement('div');
+    const heading = document.createElement('h3');
+    const email = document.createElement('div');
+    const mentorsHeading = document.createElement('h4');
+    const mentorsList = document.createElement('ul');
 
     // Set initial classes
     card.classList.add('learner-card');
