@@ -14,6 +14,7 @@ async function sprintChallenge5() { // Note the async keyword so you can use `aw
   let mentors = [];
   let learners = [];
 
+  async function fetchData() {
   try {
     // Replace 'your_api_endpoint_for_mentors' and 'your_api_endpoint_for_learners' with the actual API endpoints.
     const mentorsResponse = await axios.get('your_api_endpoint_for_mentors');
@@ -22,9 +23,17 @@ async function sprintChallenge5() { // Note the async keyword so you can use `aw
     //Store the data in the variables
     mentors = mentorsResponse.data;
     learners = learnersResponse.data;
+
+    // Log the data to verify
+    console.log('Mentors:', mentors);
+    console.log('Learners:', learners);
   } catch (error) {
-    console.error('Error fetching data:',error);
+    console.error('Error fetching data:', error);
   }
+  }
+  // call the functionto fetch the data
+  fetchData();
+
 
   // 👆 ==================== TASK 1 END ====================== 👆
 
@@ -46,7 +55,7 @@ async function sprintChallenge5() { // Note the async keyword so you can use `aw
 
      // Create a map of mentor IDs to mentor names for quick lookup
      const mentorMap = new Map();
-     mentors.foreach(mentor => {
+     mentors.forEach(mentor => {
       mentorMap.set(mentor.id, mentor.fullName);
      });
   }
@@ -61,8 +70,16 @@ learners = learners.map(learner => {
   };
 });
 
+// Log the transformed learners array to verify
+console.log('Transfomed Learners:', learners);{
+} catch (error) {
+  console.error('Error fetching data:', error);
 
-  // 👆 ==================== TASK 2 END ====================== 👆
+}
+// Call the function to fetch and process the data
+fetchData();
+
+ // 👆 ==================== TASK 2 END ====================== 👆
 
   const cardsContainer = document.querySelector('.cards')
   const info = document.querySelector('.info')
@@ -101,7 +118,7 @@ learners = learners.map(learner => {
     // Loop over the mentors inside the learner object
     for (let mentor of learner.mentors) {
       const mentorItem = document.createElement('li');
-      mentorItem.textcontent = mentor;
+      mentorItem.textContent = mentor;
       mentorsList.appendChild(mentorItem);
     }
 
@@ -112,7 +129,7 @@ learners = learners.map(learner => {
     card.appendChild(mentorsList);
 
     // Append the card to the document body or specific container (e.g., `document.getElementById('learners-container')`)
-      document.body.appendChild(card); // change to your target container if needed
+      document.getElementById('learners-container').appendChild(card); // change to your target container if needed
     }
    // Call the async function to fetch and process the data
    fetchAndProcessData();
